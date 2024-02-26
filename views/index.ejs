@@ -1,5 +1,22 @@
 <%- include('partials/head') %>
 
+<section lang="nl">
+  <h2>Huidige berichten</h2>
+  <ol>
+    <% messages.forEach(message => { %>
+      <li><%= message %></li>
+    <% }) %>
+  </ol>
+
+  <form method="POST" action="/">
+    <label>
+      Berichtje:
+      <textarea required name="bericht"></textarea>
+    </label>
+    <button type="submit">Verstuur bericht</button>
+  </form>
+</section>
+
 <h2>Students</h2>
 <ul>
   <% persons.forEach(person => { %>
