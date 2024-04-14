@@ -1,0 +1,12 @@
+<section id="messages">
+<h2>Eerdere berichten</h2>
+<% if (person.custom.messages && person.custom.messages.length) { %>
+  <ol>
+    <% person.custom.messages.forEach(message => { %>
+      <li><%= message %></li>
+    <% }) %>
+  </ol>
+<% } else { %>
+  <p>Er zijn nog geen berichten.</p>
+<% } %>
+</section>

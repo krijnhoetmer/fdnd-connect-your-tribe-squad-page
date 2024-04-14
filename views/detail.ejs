@@ -11,18 +11,7 @@
     <%- include('partials/like-button', {person: person}) %>
   </form>
 
-  <section id="messages">
-    <h2>Eerdere berichten</h2>
-    <% if (person.custom.messages && person.custom.messages.length) { %>
-      <ol>
-        <% person.custom.messages.forEach(message => { %>
-          <li><%= message %></li>
-        <% }) %>
-      </ol>
-    <% } else { %>
-      <p>Er zijn nog geen berichten.</p>
-    <% } %>
-  </section>
+  <%- include('partials/messages', {person: person}) %>
 
   <h2>Laat een bericht achter voor deze persoon!</h2>
   <form method="POST" action="/detail/<%= person.id %>" id="post-message">
@@ -30,7 +19,8 @@
       Bericht
       <textarea name="message" required></textarea>
     </label>
-    <button type="submit" name="actie" value="verstuur">Verstuur</button>
+    <input type="hidden" name="actie" value="verstuur">
+    <button type="submit">Verstuur</button>
   </form>
 </section>
 

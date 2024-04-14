@@ -123,10 +123,14 @@ app.post('/detail/:id', function(request, response) {
         'Content-type': 'application/json; charset=UTF-8'
       }
     }).then((patchResponse) => {
-      // Redirect naar de persoon pagina
       if (request.body.enhanced) {
-        response.render('partials/like-button', {person: apiResponse.data})
+        if (request.body.actie == 'verstuur') {
+          response.render('partials/messages', {person: apiResponse.data})
+        } else {
+          response.render('partials/like-button', {person: apiResponse.data})
+        }
       } else {
+        // Redirect naar de persoon pagina
         response.redirect(303, '/detail/' + request.params.id)
       }
     })
