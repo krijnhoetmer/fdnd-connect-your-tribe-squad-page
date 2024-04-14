@@ -1,0 +1,7 @@
+<% if (person.custom.like) { %>
+  <input type="hidden" name="actie" value="vind-ik-niet-leuk">
+  <button type="submit">💔</button>
+<% } else { %>
+  <input type="hidden" name="actie" value="vind-ik-leuk">
+  <button type="submit">❤️</button>
+<% } %>

@@ -124,7 +124,11 @@ app.post('/detail/:id', function(request, response) {
       }
     }).then((patchResponse) => {
       // Redirect naar de persoon pagina
-      response.redirect(303, '/detail/' + request.params.id)
+      if (request.body.enhanced) {
+        response.render('partials/like-button', {person: apiResponse.data})
+      } else {
+        response.redirect(303, '/detail/' + request.params.id)
+      }
     })
   })
 })

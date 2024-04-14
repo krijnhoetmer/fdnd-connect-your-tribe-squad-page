@@ -7,27 +7,25 @@
 
 <section lang="nl">
 
-  <form method="POST" action="/detail/<%= person.id %>">
-    <% if (person.custom.like) { %>
-      <button type="submit" name="actie" value="vind-ik-niet-leuk">💔</button>
-    <% } else { %>
-      <button type="submit" name="actie" value="vind-ik-leuk">❤️</button>
-    <% } %>
+  <form method="POST" action="/detail/<%= person.id %>" id="toggle-like">
+    <%- include('partials/like-button', {person: person}) %>
   </form>
 
-  <h2>Eerdere berichten</h2>
-  <% if (person.custom.messages && person.custom.messages.length) { %>
-    <ol>
-      <% person.custom.messages.forEach(message => { %>
-        <li><%= message %></li>
-      <% }) %>
-    </ol>
-  <% } else { %>
-    <p>Er zijn nog geen berichten.</p>
-  <% } %>
+  <section id="messages">
+    <h2>Eerdere berichten</h2>
+    <% if (person.custom.messages && person.custom.messages.length) { %>
+      <ol>
+        <% person.custom.messages.forEach(message => { %>
+          <li><%= message %></li>
+        <% }) %>
+      </ol>
+    <% } else { %>
+      <p>Er zijn nog geen berichten.</p>
+    <% } %>
+  </section>
 
   <h2>Laat een bericht achter voor deze persoon!</h2>
-  <form method="POST" action="/detail/<%= person.id %>">
+  <form method="POST" action="/detail/<%= person.id %>" id="post-message">
     <label>
       Bericht
       <textarea name="message" required></textarea>
